@@ -41,11 +41,11 @@ class SgNodeMapper
 
   private
 
-  # Get a (potentially cached) string of the sgNodeMapper source code.
+  # Get a string of the sgNodeMapper source code.
   #
   # Returns the String javascript source code.
   def source
-    @source ||= File.read(source_path)
+    File.read(source_path)
   end
 
   # Get the full path to the sgNodeMapper.js source code.
