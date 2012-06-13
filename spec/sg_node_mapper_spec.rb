@@ -16,4 +16,9 @@ describe SgNodeMapper do
       subject['value'].should == 'google'
     end
   end
+
+  describe ".url_from_graph_node('sgn://twitter.com/?ident=google', 'profile')" do
+    subject { SgNodeMapper.url_from_graph_node('sgn://twitter.com/?ident=google', 'profile') }
+    it { should == 'http://twitter.com/google' }
+  end
 end
