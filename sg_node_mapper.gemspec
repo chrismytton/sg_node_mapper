@@ -4,8 +4,8 @@ require File.expand_path('../lib/sg_node_mapper/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Chris Mytton"]
   gem.email         = ["self@hecticjeff.net"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Map social networking sites' URLs to and from a canonical form.}
+  gem.summary       = %q{The Social Graph Node Mapper is a community project to build a portable library to map social networking sites' URLs to and from a canonical form (sgn:// URLs).}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
