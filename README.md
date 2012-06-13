@@ -24,7 +24,10 @@ any methods defined in there (see `vendor/sg_node_mapper/nodemapper.js` for more
 
 ```ruby
 SgNodeMapper.url_to_graph_node('http://twitter.com/hecticjeff')
-# => sgn://twitter.com/?ident=hecticjeff
+# => "sgn://twitter.com/?ident=hecticjeff"
+
+SgNodeMapper.parse_sgn_url('sgn://twitter.com/?ident=hecticjeff')
+# => {"domain"=>"twitter.com", "keyName"=>"ident", "value"=>"hecticjeff"}
 ``` 
 
 ## Contributing
