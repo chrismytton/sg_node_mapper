@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["self@hecticjeff.net"]
   gem.description   = %q{Map social networking sites' URLs to and from a canonical form.}
   gem.summary       = %q{The Social Graph Node Mapper is a community project to build a portable library to map social networking sites' URLs to and from a canonical form (sgn:// URLs).}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/hecticjeff/sg_node_mapper"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
