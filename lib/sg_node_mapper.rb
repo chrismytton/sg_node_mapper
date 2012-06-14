@@ -7,6 +7,7 @@ require 'active_support/core_ext'
 
 # Internal
 require 'sg_node_mapper/version'
+require 'sg_node_mapper/caching'
 
 # Simple wrapper for the sgNodeMapper javascript library. Uses
 # [ExecJS](https://github.com/sstephenson/execjs) to dynamically select the best
@@ -18,6 +19,9 @@ require 'sg_node_mapper/version'
 # delegating to javascript.
 class SgNodeMapper
   include Singleton
+  include Caching
+
+  class Error < StandardError; end
 
   # When a method is called on this class, we intercept it and pass it through
   # to the javascript context by converting the method name from underscore_case
@@ -29,8 +33,16 @@ class SgNodeMapper
   #
   # Returns the result from javascript.
   def self.method_missing(method, *args)
-    instance.context.call("nodemapper.#{method.to_s.camelize(:lower)}", *args)
+    instance.send(method, *args)
   end
+
+  def method_missing(method, *args)
+    cache_and_return method, *args do
+      context.call("nodemapper.#{method.to_s.camelize(:lower)}", *args)
+    end
+  end
+
+  private
 
   # Get a (potentially cached) version of the compiled source code for sgNodeMapper.
   #
@@ -39,7 +51,6 @@ class SgNodeMapper
     @context ||= ExecJS.compile(source)
   end
 
-  private
 
   # Get a string of the sgNodeMapper source code.
   #
