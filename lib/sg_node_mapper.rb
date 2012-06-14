@@ -29,7 +29,27 @@ class SgNodeMapper
   #
   # Returns the result from javascript.
   def self.method_missing(method, *args)
-    instance.context.call("nodemapper.#{method.to_s.camelize(:lower)}", *args)
+    instance.send(method, *args)
+  end
+
+  def method_missing(method, *args)
+    cache_and_return method, *args do
+      context.call("nodemapper.#{method.to_s.camelize(:lower)}", *args)
+    end
+  end
+
+  private
+
+  def cache_and_return(method, *args, &block)
+    cache[key_for(method, *args)] ||= block.call
+  end
+
+  def cache
+    @cache ||= {}
+  end
+
+  def key_for(method, *args)
+    [method, *args].to_s
   end
 
   # Get a (potentially cached) version of the compiled source code for sgNodeMapper.
@@ -39,7 +59,6 @@ class SgNodeMapper
     @context ||= ExecJS.compile(source)
   end
 
-  private
 
   # Get a string of the sgNodeMapper source code.
   #
