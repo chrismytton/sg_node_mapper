@@ -21,6 +21,8 @@ class SgNodeMapper
   include Singleton
   include Caching
 
+  class Error < StandardError; end
+
   # When a method is called on this class, we intercept it and pass it through
   # to the javascript context by converting the method name from underscore_case
   # to camelCase, then calling that method on the javascript context with the

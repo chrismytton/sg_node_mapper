@@ -1,15 +1,15 @@
 class SgNodeMapper
   module Caching
-    def cache_and_return(method, *args, &block)
-      cache[key_for(method, *args)] ||= block.call
+
+    private
+
+    def cache_and_return(method, *args)
+      raise Error, 'You must call cache_and_return with a block' unless block_given?
+      cache[method][args] ||= yield
     end
 
     def cache
-      @cache ||= {}
-    end
-
-    def key_for(method, *args)
-      [method, *args].to_s
+      @cache ||= Hash.new { |h, k| h[k] = {} }
     end
   end
 end
