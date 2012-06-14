@@ -7,6 +7,7 @@ require 'active_support/core_ext'
 
 # Internal
 require 'sg_node_mapper/version'
+require 'sg_node_mapper/caching'
 
 # Simple wrapper for the sgNodeMapper javascript library. Uses
 # [ExecJS](https://github.com/sstephenson/execjs) to dynamically select the best
@@ -18,6 +19,7 @@ require 'sg_node_mapper/version'
 # delegating to javascript.
 class SgNodeMapper
   include Singleton
+  include Caching
 
   # When a method is called on this class, we intercept it and pass it through
   # to the javascript context by converting the method name from underscore_case
@@ -39,18 +41,6 @@ class SgNodeMapper
   end
 
   private
-
-  def cache_and_return(method, *args, &block)
-    cache[key_for(method, *args)] ||= block.call
-  end
-
-  def cache
-    @cache ||= {}
-  end
-
-  def key_for(method, *args)
-    [method, *args].to_s
-  end
 
   # Get a (potentially cached) version of the compiled source code for sgNodeMapper.
   #
