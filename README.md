@@ -1,6 +1,6 @@
 # SgNodeMapper
 
-[![Build Status](https://secure.travis-ci.org/hecticjeff/sg_node_mapper.png)](http://travis-ci.org/hecticjeff/sg_node_mapper)
+[![Build Status](https://secure.travis-ci.org/hecticjeff/sg_node_mapper.png?branch=master)](http://travis-ci.org/hecticjeff/sg_node_mapper)
 
 Lightweight ruby wrapper around the Social Graph Node Mapper [javascript
 library](https://github.com/webjay/sgNodeMapper).
