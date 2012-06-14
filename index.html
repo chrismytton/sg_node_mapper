@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>sg_node_mapper by hecticjeff</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>sg_node_mapper</h1>
+        <p>Social Graph Node Mapper for Ruby</p>
+        <p class="view"><a href="https://github.com/hecticjeff/sg_node_mapper">View the Project on GitHub <small>hecticjeff/sg_node_mapper</small></a></p>
+        <ul>
+          <li><a href="https://github.com/hecticjeff/sg_node_mapper/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/hecticjeff/sg_node_mapper/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/hecticjeff/sg_node_mapper">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>SgNodeMapper</h1>
+
+<p>Lightweight ruby wrapper around the Social Graph Node Mapper <a href="https://github.com/webjay/sgNodeMapper">javascript
+library</a>.</p>
+
+<h2>Installation</h2>
+
+<p>Add this line to your application's Gemfile:</p>
+
+<pre><code>gem 'sg_node_mapper'
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre><code>$ bundle
+</code></pre>
+
+<p>Or install it yourself as:</p>
+
+<pre><code>$ gem install sg_node_mapper
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>This library simply delegates to the javascript library, so you can call
+any methods defined in there (see <code>vendor/sg_node_mapper/nodemapper.js</code> for more details.</p>
+
+<div class="highlight">
+<pre><span class="no">SgNodeMapper</span><span class="o">.</span><span class="n">url_to_graph_node</span><span class="p">(</span><span class="s1">'http://twitter.com/hecticjeff'</span><span class="p">)</span>
+<span class="c1"># =&gt; "sgn://twitter.com/?ident=hecticjeff"</span>
+
+<span class="no">SgNodeMapper</span><span class="o">.</span><span class="n">parse_sgn_url</span><span class="p">(</span><span class="s1">'sgn://twitter.com/?ident=hecticjeff'</span><span class="p">)</span>
+<span class="c1"># =&gt; {"domain"=&gt;"twitter.com", "keyName"=&gt;"ident", "value"=&gt;"hecticjeff"}</span>
+</pre>
+</div>
+
+
+<h2>Contributing</h2>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/hecticjeff">hecticjeff</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
